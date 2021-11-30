@@ -18,11 +18,8 @@ FASTQC generated from FASTQ files for paired-end reads (R1 & R2) using ```fastqc
     fastqc /path/to/<Sample_ID_R1>.fastq.gz
     fastqc /path/to/<Sample_ID_R2>.fastq.gz
 
-Adapter Trimming using ```Trimmomatic```
+Quality trimming and adapter clipping using ```Trimmomatic```
 
     java -jar /path/to/trimmomatic-0.39.jar PE -phred33 /path/to/<Sample_ID_R1>.fastq.gz /path/to/<Sample_ID_R2>.fastq.gz
-    
-    
-    
-    
-    /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517_R1_P.fastq.gz /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517_R1_S.fastq.gz /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517_R2_P.fastq.gz /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517_R2_S.fastq.gz ILLUMINACLIP:/rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/Trimmomatic-0.39/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+    /path/to/<Sample_ID_R1_P>.fastq.gz /path/to/<Sample_ID_R1_S>.fastq.gz /path/to/<Sample_ID_R2_P>.fastq.gz /path/to/<Sample_ID_R2_S>.fastq.gz
+    ILLUMINACLIP:/path/to/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
