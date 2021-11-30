@@ -36,4 +36,4 @@ Coordinate sort .BAM file using ```samtools sort```
 
 Deduplicate sorted.bam file using ```picard``` ```MarkDuplicates``` 
 
-    
+    java -jar /path/to/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=/path/to/<Sample_ID>.sorted.bam O=/path/to/<Sample_ID>.sorted_dedup.bam M=/path/to/<Sample_ID>.sorted_markdup_metrics.txt
