@@ -34,10 +34,10 @@ Coordinate sort .BAM file using ```samtools sort```
 
     samtools sort -O bam -@ 10 -o /path/to/<Sample_ID>.sorted.bam  /path/to/<Sample_ID>.bam
 
-Deduplicate sorted.bam file using ```picard MarkDuplicates``` 
+Deduplicate sorted bam file (sorted.bam) using ```picard MarkDuplicates``` 
 
     java -jar /path/to/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=/path/to/<Sample_ID>.sorted.bam O=/path/to/<Sample_ID>.sorted_dedup.bam M=/path/to/<Sample_ID>.sorted_markdup_metrics.txt
     
-Create index of sorted_dedup.bam using bwa index ```samtools index```
+Create index of deduplicated and sorted bam file (sorted_dedup.bam) using ```samtools index```
 
     java -jar /path/to/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=/path/to/<Sample_ID>.sorted.bam O=/path/to/<Sample_ID>.sorted_dedup.bam M=/path/to/<Sample_ID>.sorted_markdup_metrics.txt
