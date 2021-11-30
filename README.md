@@ -12,6 +12,8 @@ bwa http://bio-bwa.sourceforge.net/bwa.shtml
 
 trimmomatic http://www.usadellab.org/cms/?page=trimmomatic
 
+samtools http://samtools.sourceforge.net/
+
 # Usage
 FASTQC generated from FASTQ files for paired-end reads (R1 & R2) using ```fastqc```
 
