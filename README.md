@@ -15,7 +15,7 @@ trimmomatic http://www.usadellab.org/cms/?page=trimmomatic
 samtools http://samtools.sourceforge.net/
 
 # Usage
-FASTQC generated from FASTQ files for paired-end reads (R1 & R2) using ```fastqc```
+FASTQC generated from FASTQ files for paired-end reads (R1 & R2) using ```fastqc``` for <Sample_ID>
 
     fastqc /path/to/<Sample_ID_R1>.fastq.gz
     fastqc /path/to/<Sample_ID_R2>.fastq.gz
@@ -29,3 +29,8 @@ Quality trimming and adapter clipping using ```Trimmomatic``` for <Sample_ID_R1>
 Align paired reads to hg19 genome and convert to .BAM using ```bwa mem``` and ```samtools view```
 
     bwa mem -t 4 hg19.fasta /path/to/<Sample_ID_R1_P>.fastq.gz /path/to/<Sample_ID_R2_P>.fastq.gz | samtools view -S -b - > /path/to/<Sample_ID>.bam
+    
+Coordinate sort .BAM file using ```samtools sort```
+
+    samtools sort -O bam -@ 10 -o /path/to/<Sample_ID>.sorted.bam  /path/to/<Sample_ID>.bam
+
