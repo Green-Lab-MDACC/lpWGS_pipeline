@@ -11,7 +11,9 @@ picard https://github.com/broadinstitute/picard
 bwa http://bio-bwa.sourceforge.net/bwa.shtml
 
 # Usage
-FASTQC generated from FASTQ files for paired-end reads (R1 & R2) using
-    fastqc
+FASTQC generated from FASTQ files for paired-end reads (R1 & R2) using ```fastqc```
+
+    fastqc /path/to/<FASTQ_R1>.fastq.gz
+    fastqc /path/to/<FASTQ_R2>.fastq.gz
 
 Adapter Trimming using Trimmomatic
