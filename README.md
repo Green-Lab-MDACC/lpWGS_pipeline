@@ -18,7 +18,7 @@ FASTQC generated from FASTQ files for paired-end reads (R1 & R2) using ```fastqc
     fastqc /path/to/<Sample_ID_R1>.fastq.gz
     fastqc /path/to/<Sample_ID_R2>.fastq.gz
 
-Quality trimming and adapter clipping using ```Trimmomatic```
+Quality trimming and adapter clipping using ```Trimmomatic``` for <Sample_ID_R1> & <Sample_ID_R2>
 
     java -jar /path/to/trimmomatic-0.39.jar PE -phred33 /path/to/<Sample_ID_R1>.fastq.gz /path/to/<Sample_ID_R2>.fastq.gz
     /path/to/<Sample_ID_R1_P>.fastq.gz /path/to/<Sample_ID_R1_S>.fastq.gz /path/to/<Sample_ID_R2_P>.fastq.gz /path/to/<Sample_ID_R2_S>.fastq.gz
