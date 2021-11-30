@@ -34,3 +34,4 @@ Coordinate sort .BAM file using ```samtools sort```
 
     samtools sort -O bam -@ 10 -o /path/to/<Sample_ID>.sorted.bam  /path/to/<Sample_ID>.bam
 
+Deduplicate <Sample_ID>.sorted.bam using ```picard```
