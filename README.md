@@ -15,6 +15,7 @@ trimmomatic http://www.usadellab.org/cms/?page=trimmomatic
 samtools http://samtools.sourceforge.net/
 
 GATK: https://gatk.broadinstitute.org/hc/en-us
+
 GATK3.7 Download: https://console.cloud.google.com/storage/browser/gatk-software/package-archive/gatk
 
 
