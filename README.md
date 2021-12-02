@@ -16,8 +16,6 @@ samtools http://samtools.sourceforge.net/
 
 GATK: https://gatk.broadinstitute.org/hc/en-us
 
-GATK3.7 Download: https://console.cloud.google.com/storage/browser/gatk-software/package-archive/gatk
-
 
 # Usage
 FASTQC generated from FASTQ files for paired-end reads (R1 & R2) using ```fastqc``` for <Sample_ID>
