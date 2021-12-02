@@ -55,10 +55,10 @@ Perform indel realignment using ```GATK4 HaplotypeCaller```
 
     gatk HaplotypeCaller -R /path/to/ucsc.hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup.bam -O /path/to/<Sample_ID>.sorted_dedup.IndelRealigner.vcf.gz -bamout /path/to/<Sample_ID>.sorted_dedup_realign.bam
     
-Run base quality score recalibration using ```GTK4 BaseRecalibrator```
+Run base quality score recalibration using ```GATK4 BaseRecalibrator```
 
     gatk BaseRecalibrator -R /path/to/ucsc.hg19.fasta -I /path/to/DG_517.sorted_dedup_realign.bam --knownSites /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --knownSites /path/to/1000G_phase1.indels.hg19.sites.vcf.gz --knownSites /path/to/dbsnp_138.hg19.vcf.gz -o /path/to/DG_517.sorted_dedup_realign.recal_data.table
 
-Run ```GTK4 Print Reads```
+Run ```GATK4 Print Reads```
 
     gatk PrintReads -R /path/to/ucsc.hg19.fasta -I /path/to/DG_517.sorted_dedup_realign.bam --BQSR /path/to/DG_517.sorted_dedup_realign.recal_data.table -o /path/to/DG_517.sorted_dedup_realign_BQSR.bam
