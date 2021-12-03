@@ -64,3 +64,9 @@ Run base quality score recalibration using ```GATK4 BaseRecalibrator```
 Run ```GATK4 Print Reads```
 
     gatk PrintReads -R /path/to/ucsc.hg19.fasta -I /path/to/DG_517.sorted_dedup_realign.bam --BQSR /path/to/DG_517.sorted_dedup_realign.recal_data.table -O /path/to/DG_517.sorted_dedup_realign_BQSR.bam
+
+Run base quality score recalibration using GATK3:
+
+    java -jar /path/to/GenomeAnalysisTK.jar -T BaseRecalibrator -R /path/to/ucsc.hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --knownSites /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --knownSites /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/1000G_phase1.indels.hg19.sites.vcf.gz --knownSites /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/dbsnp_138.hg19.vcf.gz -o /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup_realign.recal_data.table
+
+    java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T PrintReads -R /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/hg19/ucsc.hg19.fasta -I /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup_realign.bam --BQSR /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup_realign.recal_data.table -o /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup_realign_BQSR.bam
