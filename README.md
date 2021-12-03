@@ -47,9 +47,9 @@ Create index of deduplicated and sorted bam file (sorted_dedup.bam) using ```sam
     
 Perform indel realignment using ```GATK3 GenomeAnalysisTK```
 
-    java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T RealignerTargetCreator -R /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/hg19.fasta -I /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup.bam -known /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/1000G_phase1.indels.hg19.sites.vcf.gz -o /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup.IndelRealigner.intervals
+    java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T RealignerTargetCreator -R /path/to/hg19.fasta -I /path/to/DG_517.sorted_dedup.bam -known /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known /path/to/1000G_phase1.indels.hg19.sites.vcf.gz -o /path/to/DG_517.sorted_dedup.IndelRealigner.intervals
     
-    java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T IndelRealigner -R /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/hg19.fasta -I /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup.bam -known /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/1000G_phase1.indels.hg19.sites.vcf.gz --targetIntervals /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup.IndelRealigner.intervals -o /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup_realign.bam
+    java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T IndelRealigner -R /path/to/hg19.fasta -I /path/to/DG_517.sorted_dedup.bam -known /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known /path/to/1000G_phase1.indels.hg19.sites.vcf.gz --targetIntervals /path/to/DG_517.sorted_dedup.IndelRealigner.intervals -o /path/to/DG_517.sorted_dedup_realign.bam
 
 Perform indel realignment using ```GATK4 HaplotypeCaller```
 
