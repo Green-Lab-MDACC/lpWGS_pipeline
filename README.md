@@ -1,6 +1,6 @@
 # lpWGS_pipeline
 
-Documentation of pipeline for processing paired end read lpWGS data.
+Documentation of pipeline for processing paired end reads of lpWGS data.
 
 ![image](https://user-images.githubusercontent.com/92883998/144675744-bc49eb10-5ffd-4eb0-855e-00ef06559062.png)
 
