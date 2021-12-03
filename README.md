@@ -1,6 +1,7 @@
 # lpWGS_pipeline
 
 Documentation of pipeline for processing lpWGS data.
+![image](https://user-images.githubusercontent.com/92883998/144675354-664c2393-edd5-4f29-9e6a-f02708fe711d.png)
 
 # Required Packages
 
