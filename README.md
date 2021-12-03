@@ -57,8 +57,8 @@ Perform indel realignment using ```GATK4 HaplotypeCaller```
     
 Run base quality score recalibration using ```GATK4 BaseRecalibrator```
 
-    gatk BaseRecalibrator -R /path/to/ucsc.hg19.fasta -I /path/to/DG_517.sorted_dedup_realign.bam --knownSites /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --knownSites /path/to/1000G_phase1.indels.hg19.sites.vcf.gz --knownSites /path/to/dbsnp_138.hg19.vcf.gz -o /path/to/DG_517.sorted_dedup_realign.recal_data.table
+    gatk BaseRecalibrator -R /path/to/ucsc.hg19.fasta -I /path/to/DG_517.sorted_dedup_realign.bam --known-sites /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --known-sites /path/to/1000G_phase1.indels.hg19.sites.vcf.gz --known-sites /path/to/dbsnp_138.hg19.vcf.gz -O /path/to/DG_517.sorted_dedup_realign.recal_data.table
 
 Run ```GATK4 Print Reads```
 
-    gatk PrintReads -R /path/to/ucsc.hg19.fasta -I /path/to/DG_517.sorted_dedup_realign.bam --BQSR /path/to/DG_517.sorted_dedup_realign.recal_data.table -o /path/to/DG_517.sorted_dedup_realign_BQSR.bam
+    gatk PrintReads -R /path/to/ucsc.hg19.fasta -I /path/to/DG_517.sorted_dedup_realign.bam --BQSR /path/to/DG_517.sorted_dedup_realign.recal_data.table -O /path/to/DG_517.sorted_dedup_realign_BQSR.bam
