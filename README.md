@@ -1,7 +1,7 @@
 # lpWGS_pipeline
 
 Documentation of pipeline for processing lpWGS data.
-![image](https://user-images.githubusercontent.com/92883998/144675408-2cac4804-6d4d-4ab7-b14c-ab7562d1140c.png)
+![image](https://user-images.githubusercontent.com/92883998/144675515-7283387e-7f2a-48aa-8d1a-a8dc7d1761b9.png)
 # Required Packages
 
 fastqc https://www.bioinformatics.babraham.ac.uk/projects/fastqc/
