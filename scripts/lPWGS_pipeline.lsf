@@ -1,0 +1,15 @@
+#BSUB -J FASTQ2BAM_UL_WGS
+#BSUB -W 6:00
+#BSUB -M 96G
+#BSUB -n 12
+#BSUB -R rusage[mem=96G]
+#BSUB -u bnsugg@mdanderson.org
+#BSUB -cwd /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline
+#BSUB -q medium
+#BSUB -o /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline
+#BSUB -e /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline
+module load samtools/1.10
+module load bwa/0.7.17
+module load fastqc
+module load trimmomatic/0.39
+sh "/rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/lpWGS_pipeline.sh"
