@@ -22,10 +22,15 @@ GATK3: https://gatk.broadinstitute.org/hc/en-us
 
 # Usage
 Requirements:
+
 Sample_ID name
+
 ${Sample_ID}_R1.fastq.gz
+
 ${Sample_ID}_R2.fastq.gz
+
 ucsc.hg_19.fasta reference genome
+
 hg_19 bwa index reference genome
 
 Run lPWGS_pipeline.lsf after specifying Sample_ID name, adding ${Sample_ID}_R1.fastq.gz and ${Sample_ID}_R2.fastq.gz to data foler
