@@ -63,7 +63,7 @@ Run base quality score recalibration using ```GATK3 BaseRecalibrator```:
     java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T PrintReads -R /path/to/hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --BQSR /path/to/Test_Pipeline/<Sample_ID>.sorted_dedup_realign.recal_data.table -o /path/to/<Sample_ID>.sorted_dedup_realign_BQSR.bam
 
 
-# GATK4
+## GATK4
 
 Perform indel realignment using ```GATK4 HaplotypeCaller```
 
