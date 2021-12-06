@@ -31,9 +31,9 @@ ${Sample_ID}_R2.fastq.gz
 
 ucsc.hg_19.fasta reference genome
 
-hg_19 bwa index reference genome
+genome.fa bwa index reference genome
 
-Run lPWGS_pipeline.lsf after specifying Sample_ID name, adding ${Sample_ID}_R1.fastq.gz and ${Sample_ID}_R2.fastq.gz to data foler
+Run ```lPWGS_pipeline.lsf```  after specifying ```Sample_ID```, adding ```${Sample_ID}_R1.fastq.gz```  and  ```${Sample_ID}_R2.fastq.gz```  to data folder, adding the bwa index output of genome.fa to the data folder, and adding ucsc.hg_19.fasta to data folder.
 
 
 
