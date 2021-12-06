@@ -49,7 +49,7 @@ Create index of deduplicated and sorted bam file (sorted_dedup.bam) using ```sam
 
 From here there are two options using GATK3 or GATK4.
 
-# GATK3
+## GATK3
 Perform indel realignment using ```GATK3 GenomeAnalysisTK RealignerTargetCreator and IndelRealigner```
 
     java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T RealignerTargetCreator -R /path/to/hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup.bam -known /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known /path/to/1000G_phase1.indels.hg19.sites.vcf.gz -o /path/to/DG_517.sorted_dedup.IndelRealigner.intervals
