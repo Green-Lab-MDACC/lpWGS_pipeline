@@ -17,10 +17,22 @@ trimmomatic http://www.usadellab.org/cms/?page=trimmomatic
 
 samtools http://samtools.sourceforge.net/
 
-GATK: https://gatk.broadinstitute.org/hc/en-us
+GATK3: https://gatk.broadinstitute.org/hc/en-us
 
 
 # Usage
+Requirements:
+Sample_ID name
+${Sample_ID}_R1.fastq.gz
+${Sample_ID}_R2.fastq.gz
+ucsc.hg_19.fasta reference genome
+hg_19 bwa index reference genome
+
+Run lPWGS_pipeline.lsf after specifying Sample_ID name, adding ${Sample_ID}_R1.fastq.gz and ${Sample_ID}_R2.fastq.gz to data foler
+
+
+
+# Pipeline Description
 FASTQC generated from FASTQ files for paired-end reads (R1 & R2) using ```fastqc``` for <Sample_ID>
 
     fastqc /path/to/<Sample_ID_R1>.fastq.gz
