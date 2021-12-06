@@ -46,12 +46,24 @@ Deduplicate sorted bam file (sorted.bam) using ```picard MarkDuplicates```
 Create index of deduplicated and sorted bam file (sorted_dedup.bam) using ```samtools index```
 
     samtools index /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup.bam
-    
+
+From here there are two options using GATK3 or GATK4.
+
+# GATK3
 Perform indel realignment using ```GATK3 GenomeAnalysisTK RealignerTargetCreator and IndelRealigner```
 
     java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T RealignerTargetCreator -R /path/to/hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup.bam -known /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known /path/to/1000G_phase1.indels.hg19.sites.vcf.gz -o /path/to/DG_517.sorted_dedup.IndelRealigner.intervals
     
     java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T IndelRealigner -R /path/to/hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup.bam -known /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known /path/to/1000G_phase1.indels.hg19.sites.vcf.gz --targetIntervals /path/to/DG_517.sorted_dedup.IndelRealigner.intervals -o /path/to/<Sample_ID>.sorted_dedup_realign.bam
+
+Run base quality score recalibration using ```GATK3 BaseRecalibrator```:
+
+    java -jar /path/to/GenomeAnalysisTK.jar -T BaseRecalibrator -R /path/to/ucsc.hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --knownSites /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --knownSites /path/to/1000G_phase1.indels.hg19.sites.vcf.gz --knownSites /path/to/dbsnp_138.hg19.vcf.gz -o /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/<Sample_ID>.sorted_dedup_realign.recal_data.table
+
+    java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T PrintReads -R /path/to/hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --BQSR /path/to/Test_Pipeline/<Sample_ID>.sorted_dedup_realign.recal_data.table -o /path/to/<Sample_ID>.sorted_dedup_realign_BQSR.bam
+
+
+# GATK4
 
 Perform indel realignment using ```GATK4 HaplotypeCaller```
 
@@ -59,14 +71,8 @@ Perform indel realignment using ```GATK4 HaplotypeCaller```
     
 Run base quality score recalibration using ```GATK4 BaseRecalibrator```
 
-    gatk BaseRecalibrator -R /path/to/ucsc.hg19.fasta -I /path/to/DG_517.sorted_dedup_realign.bam --known-sites /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --known-sites /path/to/1000G_phase1.indels.hg19.sites.vcf.gz --known-sites /path/to/dbsnp_138.hg19.vcf.gz -O /path/to/DG_517.sorted_dedup_realign.recal_data.table
+    gatk BaseRecalibrator -R /path/to/ucsc.hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --known-sites /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --known-sites /path/to/1000G_phase1.indels.hg19.sites.vcf.gz --known-sites /path/to/dbsnp_138.hg19.vcf.gz -O /path/to/<Sample_ID>.sorted_dedup_realign.recal_data.table
 
 Run ```GATK4 Print Reads```
 
-    gatk PrintReads -R /path/to/ucsc.hg19.fasta -I /path/to/DG_517.sorted_dedup_realign.bam --BQSR /path/to/DG_517.sorted_dedup_realign.recal_data.table -O /path/to/DG_517.sorted_dedup_realign_BQSR.bam
-
-Run base quality score recalibration using GATK3:
-
-    java -jar /path/to/GenomeAnalysisTK.jar -T BaseRecalibrator -R /path/to/ucsc.hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --knownSites /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --knownSites /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/1000G_phase1.indels.hg19.sites.vcf.gz --knownSites /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/dbsnp_138.hg19.vcf.gz -o /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup_realign.recal_data.table
-
-    java -jar /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/GenomeAnalysisTK.jar -T PrintReads -R /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/hg19_bundle/hg19/ucsc.hg19.fasta -I /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup_realign.bam --BQSR /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup_realign.recal_data.table -o /rsrch3/home/lym_myl_rsch/bnsugg/Test_Pipeline/DG_517.sorted_dedup_realign_BQSR.bam
+    gatk PrintReads -R /path/to/ucsc.hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --BQSR /path/to/<Sample_ID>.sorted_dedup_realign.recal_data.table -O /path/to/<Sample_ID>.sorted_dedup_realign_BQSR.bam
