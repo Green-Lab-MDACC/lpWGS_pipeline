@@ -67,12 +67,12 @@ Run base quality score recalibration using ```GATK3 BaseRecalibrator```:
 
 Perform indel realignment using ```GATK4 HaplotypeCaller```
 
-    gatk HaplotypeCaller -R /path/to/ucsc.hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup.bam -O /path/to/<Sample_ID>.sorted_dedup.IndelRealigner.vcf.gz -bamout /path/to/<Sample_ID>.sorted_dedup_realign.bam
+    gatk HaplotypeCaller -R /path/to/hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup.bam -O /path/to/<Sample_ID>.sorted_dedup.IndelRealigner.vcf.gz -bamout /path/to/<Sample_ID>.sorted_dedup_realign.bam
     
 Run base quality score recalibration using ```GATK4 BaseRecalibrator```
 
-    gatk BaseRecalibrator -R /path/to/ucsc.hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --known-sites /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --known-sites /path/to/1000G_phase1.indels.hg19.sites.vcf.gz --known-sites /path/to/dbsnp_138.hg19.vcf.gz -O /path/to/<Sample_ID>.sorted_dedup_realign.recal_data.table
+    gatk BaseRecalibrator -R /path/to/hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --known-sites /path/to/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --known-sites /path/to/1000G_phase1.indels.hg19.sites.vcf.gz --known-sites /path/to/dbsnp_138.hg19.vcf.gz -O /path/to/<Sample_ID>.sorted_dedup_realign.recal_data.table
 
 Run ```GATK4 Print Reads```
 
-    gatk PrintReads -R /path/to/ucsc.hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --BQSR /path/to/<Sample_ID>.sorted_dedup_realign.recal_data.table -O /path/to/<Sample_ID>.sorted_dedup_realign_BQSR.bam
+    gatk PrintReads -R /path/to/hg19.fasta -I /path/to/<Sample_ID>.sorted_dedup_realign.bam --BQSR /path/to/<Sample_ID>.sorted_dedup_realign.recal_data.table -O /path/to/<Sample_ID>.sorted_dedup_realign_BQSR.bam
