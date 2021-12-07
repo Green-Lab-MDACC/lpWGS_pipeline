@@ -33,7 +33,7 @@ ucsc.hg_19.fasta reference genome
 
 genome.fa bwa index reference genome
 
-Run ```lPWGS_pipeline.lsf```  after specifying ```Sample_ID```, adding ```${Sample_ID}_R1.fastq.gz```  and  ```${Sample_ID}_R2.fastq.gz```  to data folder, adding the bwa index output of ```genome.fa``` to the data folder, and adding ```ucsc.hg_19.fasta``` to data folder.
+Run ```lPWGS_pipeline.sh```  after specifying ```Sample_ID```, adding ```${Sample_ID}_R1.fastq.gz```  and  ```${Sample_ID}_R2.fastq.gz```  to data folder, adding the bwa index output of ```genome.fa```, ```ucsc.hg_19.fasta```, and hg19 known-sites to the hg19 folder in the hg19 resource bundle from GATK gs://gatk-legacy-bundles
 
 
 
