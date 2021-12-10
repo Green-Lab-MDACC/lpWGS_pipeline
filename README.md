@@ -33,13 +33,16 @@ ucsc.hg_19.fasta reference genome
 
 genome.fa bwa index reference genome
 
-hg19 targets:
+hg19 known sites (from ucsc):
 
 1000G_phase1.indels.hg19.sites.vcf
 
 dbsnp_138.hg19.vcf
 
 Mills_and_1000G_gold_standard.indels.hg19.sites.vcf
+
+CopywriteR Mapping Folder (provided): hg19_100kb_chr
+
 
 Run ```lPWGS_pipeline.sh```  after specifying ```Sample_ID```, adding ```${Sample_ID}_R1.fastq.gz```  and  ```${Sample_ID}_R2.fastq.gz```  to data folder, adding the bwa index output of ```genome.fa```, ```ucsc.hg_19.fasta```, and hg19 known-sites to the hg19 folder in the hg19 resource bundle from GATK gs://gatk-legacy-bundles
 
