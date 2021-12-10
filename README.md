@@ -108,9 +108,4 @@ Run ```GATK4 Print Reads```
     
 Run ```CopywriteR```
 
-    R -e "library(<Sample_ID>)" \
--e "Sample_ID <- '<Sample_ID>'" \
--e "bam_location <- file.path(getwd(),'data',Sample_ID, paste(Sample_ID,'sorted_dedup_realign_BQSR.bam',sep='.'))" \
--e "sample.control <- data.frame(bam_location, bam_location)" \
--e "bp.param <- SnowParam(workers = 12, type = 'SOCK')" \
--e "CopywriteR(sample.control = sample.control, destination.folder=file.path(getwd(),'data',Sample_ID), reference.folder= file.path(getwd(),'data','hg19','hg19_100kb_chr'), bp.param)"
+    R -e "library(<Sample_ID>)" -e "Sample_ID <- '<Sample_ID>'" -e "bam_location <- file.path(getwd(),'data',Sample_ID, paste(Sample_ID,'sorted_dedup_realign_BQSR.bam',sep='.'))" -e "sample.control <- data.frame(bam_location, bam_location)" -e "bp.param <- SnowParam(workers = 12, type = 'SOCK')" -e "CopywriteR(sample.control = sample.control, destination.folder=file.path(getwd(),'data',Sample_ID), reference.folder= file.path(getwd(),'data','hg19','hg19_100kb_chr'), bp.param)"
