@@ -19,6 +19,10 @@ samtools http://samtools.sourceforge.net/
 
 GATK3: https://gatk.broadinstitute.org/hc/en-us
 
+copywriteR: https://github.com/PeeperLab/CopywriteR
+
+CNApp: https://github.com/elifesciences-publications/CNApp
+
 
 # Usage
 Requirements:
