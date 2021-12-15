@@ -37,13 +37,11 @@ Requirements and Required Format:
 
 ```genome.fa``` bwa index reference genome saved under "data/hg19"
 
-hg19 known sites (from ucsc):
+```1000G_phase1.indels.hg19.sites.vcf``` hg19 known sites saved under "data/hg19"
 
-```1000G_phase1.indels.hg19.sites.vcf``` saved under "data/hg19"
+```dbsnp_138.hg19.vcf``` saved under  hg19 known sites "data/hg19"
 
-```dbsnp_138.hg19.vcf``` saved under "data/hg19"
-
-```Mills_and_1000G_gold_standard.indels.hg19.sites.vcf``` saved under "data/hg19"
+```Mills_and_1000G_gold_standard.indels.hg19.sites.vcf```  hg19 known sites saved under "data/hg19"
 
 ```hg19_100kb_chr``` CopywriteR Mapping Folder (provided)
 
