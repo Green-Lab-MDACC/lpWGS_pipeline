@@ -25,27 +25,27 @@ CNApp: https://github.com/elifesciences-publications/CNApp
 
 
 # Usage
-Requirements:
+Requirements and Required Format:
 
-Sample_ID name
+```Sample_ID```
 
-${Sample_ID}_R1.fastq.gz
+```${Sample_ID}_R1.fastq.gz``` saved under "data/FASTQ"
 
-${Sample_ID}_R2.fastq.gz
+```${Sample_ID}_R2.fastq.gz``` saved under "data/FASTQ"
 
-ucsc.hg_19.fasta reference genome
+```ucsc.hg_19.fasta```saved under "data/hg19"
 
-genome.fa bwa index reference genome
+```genome.fa``` bwa index reference genome saved under "data/hg19"
 
 hg19 known sites (from ucsc):
 
-1000G_phase1.indels.hg19.sites.vcf
+```1000G_phase1.indels.hg19.sites.vcf``` saved under "data/hg19"
 
-dbsnp_138.hg19.vcf
+```dbsnp_138.hg19.vcf``` saved under "data/hg19"
 
-Mills_and_1000G_gold_standard.indels.hg19.sites.vcf
+```Mills_and_1000G_gold_standard.indels.hg19.sites.vcf``` saved under "data/hg19"
 
-CopywriteR Mapping Folder (provided): hg19_100kb_chr
+```hg19_100kb_chr``` CopywriteR Mapping Folder (provided)
 
 
 Run ```lPWGS_pipeline.sh```  after specifying ```Sample_ID```, adding ```${Sample_ID}_R1.fastq.gz```  and  ```${Sample_ID}_R2.fastq.gz```  to data folder, adding the bwa index output of ```genome.fa```, ```ucsc.hg_19.fasta```, and hg19 known-sites to the hg19 folder in the hg19 resource bundle from GATK gs://gatk-legacy-bundles
