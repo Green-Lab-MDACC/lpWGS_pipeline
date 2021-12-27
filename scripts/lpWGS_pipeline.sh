@@ -1,32 +1,51 @@
 #!/bin/bash
-Sample_ID="DG_517"
-Sample_ID_R1="${Sample_ID}_R1"
-Sample_ID_R2="${Sample_ID}_R2"
-mkdir ./data/${Sample_ID}
+Sample_ID="DG520"
+Sample_ID_R1="${Sample_ID}m22_R1"
+Sample_ID_R2="${Sample_ID}m22_R2"
+# mkdir ./data/${Sample_ID}
 
-# Run FastQC
-fastqc ./data/FASTQ/$Sample_ID_R1.fastq.gz
-fastqc ./data/FASTQ/$Sample_ID_R2.fastq.gz
+# # Run FastQC
+# fastqc ./data/FASTQ/$Sample_ID_R1.fastq.gz
+# fastqc ./data/FASTQ/$Sample_ID_R2.fastq.gz
 
-# Trim Reads
-java -jar ./programs/Trimmomatic-0.39/trimmomatic-0.39.jar PE -phred33 \
-./data/FASTQ/$Sample_ID_R1.fastq.gz ./data/FASTQ/$Sample_ID_R2.fastq.gz \
-./data/${Sample_ID}/${Sample_ID_R1}_P.fastq.gz ./data/${Sample_ID}/${Sample_ID_R1}_S.fastq.gz \
-./data/${Sample_ID}/${Sample_ID_R2}_P.fastq.gz ./data/${Sample_ID}/${Sample_ID_R2}_S.fastq.gz \
-ILLUMINACLIP:./Trimmomatic-0.39/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+# # Trim Reads
+# java -jar ./programs/Trimmomatic-0.39/trimmomatic-0.39.jar PE -phred33 \
+# ./data/FASTQ/$Sample_ID_R1.fastq.gz ./data/FASTQ/$Sample_ID_R2.fastq.gz \
+# ./data/${Sample_ID}/${Sample_ID_R1}_P.fastq.gz ./data/${Sample_ID}/${Sample_ID_R1}_S.fastq.gz \
+# ./data/${Sample_ID}/${Sample_ID_R2}_P.fastq.gz ./data/${Sample_ID}/${Sample_ID_R2}_S.fastq.gz \
+# ILLUMINACLIP:./programs/Trimmomatic-0.39/adapters/TruSeq3-PE-2.fa:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
 
-#Align Reads to hg19 genome
-bwa mem -t 4 -R "@RG\tPL:ILLUMINA\tID:HFNTGDRXY.1.TACGCTAC+CGTGTGAT\tPU:HFNTGDRXY.1.TACGCTAC+CGTGTGAT\tSM:${Sample_ID}" ./data/hg19/genome.fa ./data/${Sample_ID}/${Sample_ID_R1}_P.fastq.gz ./data/${Sample_ID}/${Sample_ID_R2}_P.fastq.gz | samtools view -S -b - > ./data/${Sample_ID}/$Sample_ID.bam
-samtools sort -O bam -@ 10 -o ./data/${Sample_ID}/${Sample_ID}.sorted.bam ./data/${Sample_ID}/${Sample_ID}.bam
+# #Align Reads to hg19 genome
+# bwa mem -t 4 -R "@RG\tPL:ILLUMINA\tSM:${Sample_ID}" ./data/hg19/genome.fa ./data/${Sample_ID}/${Sample_ID_R1}_P.fastq.gz ./data/${Sample_ID}/${Sample_ID_R2}_P.fastq.gz | samtools view -S -b - > ./data/${Sample_ID}/$Sample_ID.bam
+# samtools sort -O bam -@ 10 -o ./data/${Sample_ID}/${Sample_ID}.sorted.bam ./data/${Sample_ID}/${Sample_ID}.bam
 
-#Deduplicate w/ picard and index
-java -jar $PWD/programs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=$PWD/data/${Sample_ID}/$Sample_ID.sorted.bam O=$PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.bam M=$PWD/data/${Sample_ID}/$Sample_ID.sorted_markdup_metrics.txt
-samtools index $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.bam
+# #Deduplicate w/ picard and index
+# java -jar $PWD/programs/picard.jar MarkDuplicates REMOVE_DUPLICATES=true I=$PWD/data/${Sample_ID}/$Sample_ID.sorted.bam O=$PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.bam M=$PWD/data/${Sample_ID}/$Sample_ID.sorted_markdup_metrics.txt
+# samtools index $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.bam
 
-#Perform indel realignment using GATK3 RealignerTargetCreator and IndelRealigner
-java -jar $PWD/programs/GenomeAnalysisTK.jar -T RealignerTargetCreator -R $PWD/data/hg19/ucsc.hg19.fasta  -I $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.bam -known $PWD/data/hg19/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known $PWD/data/hg19/1000G_phase1.indels.hg19.sites.vcf.gz -o $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.IndelRealigner.intervals
-java -jar $PWD/programs/GenomeAnalysisTK.jar -T IndelRealigner -R $PWD/data/hg19/ucsc.hg19.fasta -I $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.bam -known $PWD/data/hg19/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known $PWD/data/hg19/1000G_phase1.indels.hg19.sites.vcf.gz --targetIntervals $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.IndelRealigner.intervals -o $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup_realign.bam
+# #Perform indel realignment using GATK3 RealignerTargetCreator and IndelRealigner
+# java -jar $PWD/programs/GenomeAnalysisTK.jar -T RealignerTargetCreator -R $PWD/data/hg19/ucsc.hg19.fasta  -I $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.bam -known $PWD/data/hg19/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known $PWD/data/hg19/1000G_phase1.indels.hg19.sites.vcf.gz -o $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.IndelRealigner.intervals
+# java -jar $PWD/programs/GenomeAnalysisTK.jar -T IndelRealigner -R $PWD/data/hg19/ucsc.hg19.fasta -I $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.bam -known $PWD/data/hg19/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz -known $PWD/data/hg19/1000G_phase1.indels.hg19.sites.vcf.gz --targetIntervals $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup.IndelRealigner.intervals -o $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup_realign.bam
 
-#Perform BQSR
-java -jar $PWD/programs/GenomeAnalysisTK.jar -T BaseRecalibrator -R $PWD/data/hg19/ucsc.hg19.fasta -I $PWD/data/${Sample_ID}/${Sample_ID}.sorted_dedup_realign.bam --knownSites $PWD/data/hg19/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --knownSites $PWD/data/hg19/1000G_phase1.indels.hg19.sites.vcf.gz --knownSites $PWD/data/hg19/dbsnp_138.hg19.vcf.gz -o $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup_realign.recal_data.table
-java -jar $PWD/programs/GenomeAnalysisTK.jar -T PrintReads -R $PWD/data/hg19/ucsc.hg19.fasta -I $PWD/data/${Sample_ID}/${Sample_ID}.sorted_dedup_realign.bam --BQSR $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup_realign.recal_data.table -o $PWD/data/${Sample_ID}/${Sample_ID}.sorted_dedup_realign_BQSR.bam
+# #Perform BQSR
+# java -jar $PWD/programs/GenomeAnalysisTK.jar -T BaseRecalibrator -R $PWD/data/hg19/ucsc.hg19.fasta -I $PWD/data/${Sample_ID}/${Sample_ID}.sorted_dedup_realign.bam --knownSites $PWD/data/hg19/Mills_and_1000G_gold_standard.indels.hg19.sites.vcf.gz --knownSites $PWD/data/hg19/1000G_phase1.indels.hg19.sites.vcf.gz --knownSites $PWD/data/hg19/dbsnp_138.hg19.vcf.gz -o $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup_realign.recal_data.table
+# java -jar $PWD/programs/GenomeAnalysisTK.jar -T PrintReads -R $PWD/data/hg19/ucsc.hg19.fasta -I $PWD/data/${Sample_ID}/${Sample_ID}.sorted_dedup_realign.bam --BQSR $PWD/data/${Sample_ID}/$Sample_ID.sorted_dedup_realign.recal_data.table -o $PWD/data/${Sample_ID}/${Sample_ID}.sorted_dedup_realign_BQSR.bam
+
+#Perform CopywriteR
+# R -e "library(CopywriteR)" \
+# -e "bam_location <- file.path(getwd(),'data',Sample_ID, paste(Sample_ID,'sorted_dedup_realign_BQSR.bam',sep='.'))" \
+# -e "sample.control <- data.frame(bam_location, bam_location)" \
+# -e "bp.param <- SnowParam(workers = 12, type = 'SOCK')" \
+# -e "CopywriteR(sample.control = sample.control, destination.folder=file.path(getwd(),'data',Sample_ID), reference.folder= file.path(getwd(),'data','hg19','hg19_100kb_chr'), bp.param)" \
+# -e "plotCNA(destination.folder = file.path(getwd(),'data',Sample_ID))" \
+
+#Extract seg file
+R -e "Sample_ID <- '${Sample_ID}'" \
+-e "load(file.path(getwd(),'data',Sample_ID,'CNAprofiles','segment.Rdata'))" \
+-e "write.csv(segment.CNA.object[['output']], file = file.path(getwd(),'data',Sample_ID,'CNAprofiles','${Sample_ID}.csv'))"
+
+#Modify seg file
+python ./scripts/cnapp_prepper.py ${Sample_ID}
+
+# #Perform CNApp
+# Rscript $PWD/programs/CNApp-master/server.R
