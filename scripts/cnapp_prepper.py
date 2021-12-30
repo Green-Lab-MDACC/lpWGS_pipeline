@@ -12,11 +12,16 @@ os.remove(file_path)
 df = df.drop(['num.mark'], axis=1)
 df = df.rename(columns={'chrom': 'chr'})
 df['ID'] = sample_id
+ichorCNA_output = os.path.join(str(wd), 'data', sample_id, str(sample_id) + '.params.txt')
+with open(ichorCNA_output) as f:
+    tf = (f.readlines()[6][16:-1])
+    f.close()
+df['purity'] = tf
 df = df.drop(['Unnamed: 0'], axis=1)
 file_name = str(sample_id) + '_filtered' + '.csv'
 df.to_csv(file_path, index=False, sep='\t')
-txt_file_name = str(sample_id) + '.txt'
-txt_file = os.path.join(str(wd), 'data', sample_id, 'CNAprofiles', txt_file_name)
+txt_file_name = str(sample_id) + '.CNApp__input' + '.txt'
+txt_file = os.path.join(str(wd), 'data', sample_id, txt_file_name)
 with open(txt_file, "w") as my_output_file:
     with open(file_path, "r") as my_input_file:
         [ my_output_file.write(" ".join(row)+'\n') for row in csv.reader(my_input_file)]
