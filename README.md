@@ -2,8 +2,6 @@
 
 Documentation of pipeline for processing paired end reads of lpWGS data.
 
-![image](https://user-images.githubusercontent.com/92883998/144877994-9abf667d-aca0-406d-bf32-1c8798f21a4c.png)
-
 ![image](https://user-images.githubusercontent.com/92883998/147773578-192c4ee8-14bf-4b53-ba6b-2e9edc585c03.png)
 
 
