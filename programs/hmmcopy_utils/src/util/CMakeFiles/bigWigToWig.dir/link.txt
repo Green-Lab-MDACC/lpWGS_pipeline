@@ -1,0 +1,1 @@
+/risapps/rhel7/gcc/7.1.0/bin/cc -O3 -DNDEBUG  -rdynamic CMakeFiles/bigWigToWig.dir/bigwig/bigWigToWig.c.o  -o ../../util/bigwig/bigWigToWig  ../../lib/libkent.a -lm -lz 

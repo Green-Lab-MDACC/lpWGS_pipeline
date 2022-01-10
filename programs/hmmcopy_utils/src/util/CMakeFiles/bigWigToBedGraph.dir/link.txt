@@ -1,0 +1,1 @@
+/risapps/rhel7/gcc/7.1.0/bin/cc -O3 -DNDEBUG  -rdynamic CMakeFiles/bigWigToBedGraph.dir/bigwig/bigWigToBedGraph.c.o  -o ../../util/bigwig/bigWigToBedGraph  ../../lib/libkent.a -lm -lz 
