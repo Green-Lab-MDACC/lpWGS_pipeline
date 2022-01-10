@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/rsrch3/home/lym_myl_rsch/bnsugg/lpWGS_pipeline/programs/hmmcopy_utils/lib/split/split.cpp
+split.h
+/rsrch3/home/lym_myl_rsch/bnsugg/lpWGS_pipeline/programs/hmmcopy_utils/lib/split/split.h
+
+/rsrch3/home/lym_myl_rsch/bnsugg/lpWGS_pipeline/programs/hmmcopy_utils/lib/split/split.h
+string
+-
+vector
+-
+sstream
+-
+string.h
+-
+
