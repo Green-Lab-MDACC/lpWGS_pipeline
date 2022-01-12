@@ -48,9 +48,9 @@ Requirements and Required Format:
 ```hg19_100kb_chr``` CopywriteR Mapping Folder (provided)
 
 
-Run ```lPWGS_pipeline.sh```  after specifying ```Sample_ID```, adding ```${Sample_ID}_R1.fastq.gz```  and  ```${Sample_ID}_R2.fastq.gz```  to data folder, adding the bwa index output of ```genome.fa```, ```ucsc.hg_19.fasta```, and hg19 known-sites to the hg19 folder in the hg19 resource bundle from GATK gs://gatk-legacy-bundles
+Run ```lPWGS_pipeline.sh```  after specifying ```Sample_ID```, adding ```${Sample_ID}_R1.fastq.gz```  and  ```${Sample_ID}_R2.fastq.gz```  to data folder, adding the bwa index output of ```genome.fa```, ```ucsc.hg_19.fasta```, and ```hg19 known-sites``` to the hg19 folder in the hg19 resource bundle from GATK gs://gatk-legacy-bundles
 
-Run ``copywriter.sh`` after specifying ```Sample_ID``
+Run ``copywriter.sh`` after specifying ```Sample_ID```
 
 # Pipeline Description
 FASTQC generated from FASTQ files for paired-end reads (R1 & R2) using ```fastqc``` for <Sample_ID>
