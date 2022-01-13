@@ -107,7 +107,7 @@ Run ```CopywriteR```
 
 Run ```IchorCNA```
 
-    script $PWD/programs/ichorCNA/scripts/runIchorCNA.R --id ${Sample_ID} --WIG $PWD/data/${Sample_ID}/${Sample_ID}.wig --outDir $PWD/data/${Sample_ID} --gcWig $PWD/programs/ichorCNA/inst/extdata/gc_hg19_1000kb.wig --normal 'c(0.5, 0.85, 0.995, 0.999)' --libdir $PWD/programs/ichorCNA
+    script path/to/ichorCNA/scripts/runIchorCNA.R --id <Sample_ID> --WIG path/to/data/<Sample_ID>/<Sample_ID>.wig --outDir path/to/data/<Sample_ID> --gcWig path/to/programs/ichorCNA/inst/extdata/gc_hg19_1000kb.wig --normal 'c(0.5, 0.85, 0.995, 0.999)' --libdir /path/to/programs/ichorCNA
 
 ## CNApp
 
