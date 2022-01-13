@@ -80,8 +80,6 @@ Create index of deduplicated and sorted bam file (sorted_dedup.bam) using ```sam
     samtools index /path/to/data/${Sample_ID}/$Sample_ID.sorted_dedup.bam
 
 
-From here there are two options using GATK3 or GATK4.
-
 ## GATK3
 Perform indel realignment using ```GATK3 GenomeAnalysisTK RealignerTargetCreator and IndelRealigner```
 
